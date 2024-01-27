@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>拡張機能の設定</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="markdown.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 16px;
+      color: #333333;
+    }
+
+    h1 {
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: calc(100% - 22px);
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #008CBA;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #007B9E;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    #options-form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    #options-form2 {
+      background-color: #fffff1;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    #options-form3 {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    /* 既存のスタイルを適切に適用 */
+    .code-block,
+    .copy-btn {
+      /* 以下は既に提供されているスタイルを適用 */
+    }
+
+    /* 追加する場合 */
+    .code-container {
+      background-color: #1e1e1e;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+
+
+/* コンテナ全体のスタイル */
+.code-container {
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  border: 1px solid #fff; /* 枠を白色で指定 */
+}
+
+/* コピーコードのコンテナのスタイル */
+.copy-code-container {
+  padding: 8px; /* コンテナのパディングを設定 */
+  background-color: #000; /* 背景色を黒に */
+  text-align: right; /* テキストを右側に配置 */
+}
+
+/* Copy code/Copiedのステータス表示テキストのスタイル */
+.copy-status {
+  user-select: none; /* テキストを選択不可にする */
+  background-color: #000; /* 背景色は黒色 */
+  color: #fff; /* テキストは白色 */
+  cursor: pointer; /* カーソルを指に */
+}
+
+/* コードブロックのスタイル */
+.code-block {
+  margin: 0; /* マージンをゼロに設定 */
+  padding: 8px; /* コンテナのパディングを設定 */
+  background-color: #000; /* 背景色を黒に */
+  white-space: pre-wrap;
+  overflow-x: auto; /* 横にスクロールバーが表示されるようにする */
+}
+
+.copy-status.disabled {
+  pointer-events: none; /* ポインタイベント無効化 */
+  opacity: 0.5; /* 透明度を下げる */
+  cursor: default; /* カーソルをデフォルトに */
+}
+
+  .input-textbox {
+    width: calc(100% - 22px); /* 設定されているパディングとボーダーに合わせて調整 */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+#urlsList {
+  max-width: 100%; /* 親要素に合わせて最大幅を設定 */
+  overflow-x: auto; /* 横スクロールを有効化 */
+  word-break: break-all; /* 長い単語でも折り返す */
+  overflow-wrap: break-word; /* 単語を途中で折り返す */
+  list-style-type: none; /* リストマーカーを非表示にする */
+  padding-left: 0; /* リストのパディングを取り除く */
+}
+
+.input-group input[type="text"],
+.input-group button {
+  flex-grow: 1; /* 要素が利用可能なスペースを埋めるようにする */
+  margin-right: 8px; /* 隣とのスペースを設ける */
+}
+
+.input-group button {
+  flex-grow: 0; /* ボタンは拡大しないように設定 */
+  white-space: nowrap; /* ボタンテキストの折り返しを防止 */
+}
+
+  </style>
+</head>
+<body>
+
+<h1>拡張機能の設定</h1>
+
+<form id="options-form">
+  <div class="form-group">
+    <label for="apiToken">APIトークン:</label>
+    <input type="password" id="apiToken">
+    <button type="button" id="togglePassword">表示</button>
+  </div>
+
+  <div class="form-group">
+    <label for="endpointUrl">エンドポイントURL:</label>
+    <input type="text" id="endpointUrl">
+  </div>
+
+  <button type="submit">保存</button>
+</form>
+
+<form id="options-form2">
+<div id="urlsContainer">
+  <label for="newSpreadsheetId">スプレッドシートIDとGASデプロイURLのペア:</label>
+  <ul id="urlsList"></ul>
+  
+  <div class="input-group">
+    <input type="text" id="newSpreadsheetId" placeholder="新しいスプレッドシートID">
+    <input type="text" id="newGasDeployUrl" placeholder="新しいGASデプロイURL">
+    <button type="button" id="addUrlPair">ペアを追加</button>
+  </div>
+</div>
+</form>
+
+<form id="options-form3">
+<div class="code-container">
+  <div class="copy-code-container">
+    <span id="copyStatus" class="copy-status" role="button" tabindex="0">Copy code</span>
+  </div>
+  <pre class="code-block"><code>
+  function getDataFromSheet(sheetName) {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
+    var data = sheet.getDataRange().getValues();
+    return data;
+  }
+
+  function constructJSONResponse(data) {
+    return ContentService.createTextOutput(JSON.stringify(data))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  function doGet(e) {
+    var sheetName = e.parameter.sheet;
+    var data = getDataFromSheet(sheetName);
+    return constructJSONResponse(data);
+  }
+  </code></pre>
+</div>
+</form>
+
+<script src="options.js"></script>
+</body>
+</html>

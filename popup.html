@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Text to Azure OpenAI</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="markdown.css">
+    <link rel="stylesheet" href="init-popup.css">
+</head>
+<body>
+  <!-- popup.html -->
+  <div id="mainContent" style="display: none;">
+    <button id="closeButton" class="closepop">Close</button><p>
+    <select id="sheetNameSelect" class="hidden"><br>
+        <option value="">Select a sheet</option>
+    </select>
+    <div class="container input-with-button">
+        <textarea id="inputText" rows="2" placeholder="日本語で要約、もしくはデータ分析をお願い">日本語で要約、もしくはデータ分析をお願い</textarea>
+        <button id="analyzeButton">Submit</button>
+    </div>
+    <div id="responseArea" class="body response-area"></div>
+  </div>
+
+  <div id="settingsLink" style="display: none;">
+    <p>APIトークンとエンドポイントURLが設定されていません。</p>
+    <a href="options.html" target="_blank">設定ページへ</a>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

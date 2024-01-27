@@ -1,0 +1,96 @@
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+    background-color: #eaeaea; /* 背景色変更 */
+}
+
+#mainContent {
+    display: none; /* 初期状態では非表示 */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    width: 340px;
+    margin: 15px auto; /* センタリング */
+}
+
+.closepop {
+    float: right;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #777; /* アイコン色変更 */
+    font-size: 1.2em;
+}
+
+.container {
+    width: 100%; /* フル幅に */
+}
+
+textarea {
+    width: 100%; /* 横幅を最大に */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd; /* 枠線を控えめに */
+    border-radius: 4px; /* 角丸を追加 */
+    resize: none; /* リサイズ無効化 */
+}
+
+button {
+    width: auto; /* 自動的にテキストに合わせる */
+    padding: 10px 20px;
+    background-color: #007BFF; /* 青系統の色 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* トランジションを追加 */
+}
+
+button:hover {
+    background-color: #0056b3; /* ホバー時に色を暗く */
+}
+
+.response-area {
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px; /* 角丸を追加 */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* コードブロックのスタイル */
+.code-block {
+  background-color: #000;
+  color: #fff;
+  padding: 15px;
+  overflow-x: auto; /* コードが長い場合に横スクロールバーを表示 */
+  white-space: pre-wrap; /* 改行文字による折り返しを実現 */
+}
+
+.code-block, pre code {
+  color: #fff; /* 白色 */
+}
+
+.container.input-with-button {
+    display: flex; /* フレックスレイアウトを適用 */
+    align-items: center; /* アイテムを垂直方向に中央揃え */
+    justify-content: space-between; /* アイテム間に適切なスペースを設定 */
+}
+
+.container.input-with-button #inputText {
+    flex-grow: 1; /* 利用可能なスペースをフィル */
+    margin-right: 10px; /* ボタンとの間隔を設置 */
+    /* 既存の #inputText スタイルはここで上書きまたは追加 */
+}
+
+.container.input-with-button #analyzeButton {
+    white-space: nowrap; /* ボタンのテキストを折り返さない */
+    /* 既存の #analyzeButton スタイルはここで上書きまたは追加 */
+}

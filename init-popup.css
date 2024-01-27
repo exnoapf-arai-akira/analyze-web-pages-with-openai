@@ -1,0 +1,30 @@
+/* init-popup.css */
+#settingsLink {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  text-align: center;
+}
+
+#settingsLink p {
+  margin: 20px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+#settingsLink a {
+  padding: 10px 20px;
+  background-color: #0078d7;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+#settingsLink a:hover {
+  background-color: #005a9e;
+  cursor: pointer;
+}

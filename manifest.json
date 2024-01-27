@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Spreadsheet to Azure OpenAI",
+  "version": "1.0",
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://*.google.com/",
+    "https://*.com/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "cuteghost16.png",
+      "48": "cuteghost48.png",
+      "128": "cuteghost128.png"
+    }
+  },
+  "icons": {
+    "16": "cuteghost16.png",
+    "48": "cuteghost48.png",
+    "128": "cuteghost128.png"
+  }
+}
