@@ -161,6 +161,53 @@
   white-space: nowrap; /* ボタンテキストの折り返しを防止 */
 }
 
+.endpoint-example {
+  font-family: 'Courier New', monospace;
+  background-color: #efefef;
+  padding: 8px;
+  border-radius: 4px;
+  display: block;
+  margin-top: 8px;
+  overflow-x: auto;
+}
+
+.endpoint-example var {
+  color: #007B9E;
+  font-style: normal;
+}
+
+#urlsList {
+  list-style-type: none; /* リストマーカーを非表示にする */
+  padding-left: 0; /* デフォルトのパディングを削除 */
+  margin-top: 16px;
+}
+
+.url-item {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.url-label {
+  font-weight: bold;
+}
+
+.url-value {
+  word-break: break-all; /* 長いURLを適宜改行 */
+  color: #0056b3;
+}
+
+.url-value a {
+  text-decoration: none;
+  color: #0056b3;
+}
+
+.url-value a:hover {
+  text-decoration: underline;
+}
+
   </style>
 </head>
 <body>
@@ -176,7 +223,14 @@
 
   <div class="form-group">
     <label for="endpointUrl">エンドポイントURL:</label>
-    <input type="text" id="endpointUrl">
+    <input type="text" id="endpointUrl"><br>
+    <span class="endpoint-example">
+      例: https://<var>{your-resource-name}</var>.openai.azure.com/openai/deployments/<var>{deployment-name}</var>/chat/completions?api-version=<var>{api-version}</var><p>
+      <var>your-resource-name</var>: openai-westus-test001<br>
+      <var>deployment-name</var>: gpt-4-turbo<br>
+      <var>api-version</var>: 2023-12-01-preview<p>
+      <a href=https://learn.microsoft.com/ja-jp/azure/ai-services/openai/reference>REST API Reference</a>
+    </span>
   </div>
 
   <button type="submit">保存</button>

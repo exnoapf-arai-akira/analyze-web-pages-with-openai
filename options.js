@@ -54,11 +54,27 @@ function restoreOptions() {
 }
 
 // 保存されたスプレッドシートIDとGASデプロイURLのペアをリストに表示
+//function restoreUrlPairs(urlPairs) {
+//  var listElement = document.getElementById("urlsList");
+//  urlPairs.forEach(function(pair) {
+//    var li = document.createElement("li");
+//    li.textContent = `スプレッドシートID: ${pair.spreadsheetId}, GASデプロイURL: ${pair.gasDeployUrl}`;
+//    listElement.appendChild(li);
+//  });
+//}
 function restoreUrlPairs(urlPairs) {
   var listElement = document.getElementById("urlsList");
   urlPairs.forEach(function(pair) {
     var li = document.createElement("li");
-    li.textContent = `スプレッドシートID: ${pair.spreadsheetId}, GASデプロイURL: ${pair.gasDeployUrl}`;
+    li.className = 'url-item'; // 追加したCSSのクラスを適用する
+    li.innerHTML = `
+      <span class="url-label">スプレッドシートID:</span>
+      <span class="url-value">${pair.spreadsheetId}</span><br>
+      <span class="url-label">GASデプロイURL:</span>
+      <span class="url-value">
+        <a href="${pair.gasDeployUrl}" target="_blank">${pair.gasDeployUrl}</a>
+      </span>
+    `;
     listElement.appendChild(li);
   });
 }
