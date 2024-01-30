@@ -371,21 +371,35 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // コピーボタンのクリックイベントを追加するコード
-document.getElementById('copyButton').addEventListener('click', function() {
-  var code = responseArea.querySelector('code'); // コードブロックを取得
-  var range = document.createRange();
-  var selection = window.getSelection();
+document.addEventListener('DOMContentLoaded', function() {
+  var copyButton = document.getElementById('copyButton');
+  
+  if(copyButton) {
+    copyButton.addEventListener('click', function() {
+      var responseArea = document.getElementById('responseArea'); // responseAreaを適宜取得
+      var code = responseArea.querySelector('code'); // コードブロックを取得
 
-  range.selectNodeContents(code); // コード全体を選択
-  selection.removeAllRanges(); // 既存の選択範囲をクリア
-  selection.addRange(range); // 新たに選択範囲を設定
+      if(code) { // codeタグの存在チェック
+        var range = document.createRange();
+        var selection = window.getSelection();
 
-  try {
-    document.execCommand('copy'); // コピーを実行
-    alert('コードをコピーしました。');
-  } catch (err) {
-    console.error('コピーに失敗しました: ', err);
+        range.selectNodeContents(code); // コード全体を選択
+        selection.removeAllRanges(); // 既存の選択範囲をクリア
+        selection.addRange(range); // 新たに選択範囲を設定
+
+        try {
+          document.execCommand('copy'); // コピーを実行
+          alert('コードをコピーしました。');
+        } catch (err) {
+          console.error('コピーに失敗しました: ', err);
+        }
+
+        selection.removeAllRanges(); // 選択範囲をクリア
+      } else {
+        alert('コピーするコードがありません。');
+      }
+    });
+  } else {
+    console.log("copyButtonがDOMに存在しません。");
   }
-
-  selection.removeAllRanges(); // 選択範囲をクリア
 });
